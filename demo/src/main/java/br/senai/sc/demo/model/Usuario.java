@@ -1,7 +1,6 @@
 package br.senai.sc.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 // @Entity
 //
@@ -19,13 +18,23 @@ import jakarta.persistence.Id;
 //
 // Define qual será o atributo referente à chave primária da tabela no db
 
+// @GeneratedValue
+//
+// Define uma estratégia de geração de valor
+
 @Entity
 public class Usuario {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(precision = 11, updatable = false, unique = true)
     private Long cpf;
+    @Column(nullable = false)
     private String nome;
+    @Column(unique = true)
     private String email;
+    @Column(name = "password")
     private String senha;
+    @Column(length = 25)
     private String nomePet;
 }
