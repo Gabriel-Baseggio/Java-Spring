@@ -14,8 +14,9 @@ import lombok.ToString;
 // A anotação na classe cria o toString padrão com todos os atributos da classe. É possível excluir um atributo do
 // toString usando a anotação @ToString.Exclude, ou adicionar apenas um usando @ToString.Include.
 
-@ToString
 @Entity
+@ToString
+@Getter
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,6 @@ public class Usuario {
     private Long cpf;
 
     @Column(nullable = false)
-    @Getter
     private String nome;
 
     @Column(unique = true)
@@ -35,6 +35,6 @@ public class Usuario {
     @Column(name = "password")
     private String senha;
 
-    @Column(length = 25)
+    @Column(length = 50)
     private String nomePet;
 }
