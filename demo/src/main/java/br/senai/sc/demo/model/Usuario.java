@@ -1,22 +1,15 @@
 package br.senai.sc.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
-
-// @Getter
-//
-// A anotação na classe cria os getters padronizados para todos os atributos, se for apenas em um atributo, cria o
-// getter padrão para apenas aquele atributo
-
-// @ToString
-//
-// A anotação na classe cria o toString padrão com todos os atributos da classe. É possível excluir um atributo do
-// toString usando a anotação @ToString.Exclude, ou adicionar apenas um usando @ToString.Include.
 
 @Entity
 @ToString
 @Getter
+@Setter
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +26,7 @@ public class Usuario {
 
     @ToString.Exclude
     @Column(name = "password")
+    @JsonIgnore
     private String senha;
 
     @Column(length = 50)
